@@ -20,9 +20,10 @@ npm run lint     # Run ESLint
 
 ## IMPORTANT: Documentation First
 
-Before generating any code, ALWAYS check the `/docs` directory for relevant documentation files. These docs define the project's design decisions, conventions, and specifications — all generated code must align with them.
+Before generating any code, ALWAYS check the `/docs` directory for relevant documentation files. These docs define the project's design decisions, conventions, and specifications — all generated code must align with them:
 
 - /docs/ui.md
+- /docs/data-fetching.md
 
 ## Architecture
 
