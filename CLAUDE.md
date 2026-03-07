@@ -18,6 +18,12 @@ npm run lint     # Run ESLint
 - **TypeScript**
 - **Tailwind CSS v4** (configured via `postcss.config.mjs`)
 
+## IMPORTANT: Documentation First
+
+Before generating any code, ALWAYS check the `/docs` directory for relevant documentation files. These docs define the project's design decisions, conventions, and specifications — all generated code must align with them.
+
+- /docs/ui.md
+
 ## Architecture
 
 This is a fresh Next.js App Router project — the lifting diary app is yet to be built. Current structure:
