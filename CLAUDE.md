@@ -24,6 +24,7 @@ Before generating any code, ALWAYS check the `/docs` directory for relevant docu
 
 - /docs/ui.md
 - /docs/data-fetching.md
+- /docs/data-mutations.md
 
 ## Architecture
 
