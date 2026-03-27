@@ -63,3 +63,31 @@ export async function getWorkoutsForDate(date: Date) {
 
   return Array.from(workoutMap.values());
 }
+
+export async function getWorkoutById(workoutId: number) {
+  const { userId } = await auth();
+  if (!userId) throw new Error("Unauthorized");
+
+  const [workout] = await db
+    .select()
+    .from(workouts)
+    .where(and(eq(workouts.id, workoutId), eq(workouts.userId, userId)));
+
+  return workout ?? null;
+}
+
+export async function updateWorkout(
+  workoutId: number,
+  data: { name: string; startedAt: Date }
+) {
+  const { userId } = await auth();
+  if (!userId) throw new Error("Unauthorized");
+
+  const [workout] = await db
+    .update(workouts)
+    .set(data)
+    .where(and(eq(workouts.id, workoutId), eq(workouts.userId, userId)))
+    .returning({ id: workouts.id });
+
+  return workout;
+}
