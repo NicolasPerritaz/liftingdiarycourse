@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { format } from "date-fns";
 import {
   Card,
@@ -57,22 +58,28 @@ export default async function DashboardPage({
         ) : (
           <div className="flex flex-col gap-4">
             {workoutList.map((workout) => (
-              <Card key={workout.id}>
-                <CardHeader className="pb-2">
-                  <CardTitle className="text-base">
-                    {workout.name ?? "Untitled Workout"}
-                  </CardTitle>
-                </CardHeader>
-                {workout.exercises.length > 0 && (
-                  <CardContent>
-                    <ul className="list-disc list-inside text-sm text-muted-foreground space-y-1">
-                      {workout.exercises.map((exercise) => (
-                        <li key={exercise}>{exercise}</li>
-                      ))}
-                    </ul>
-                  </CardContent>
-                )}
-              </Card>
+              <Link
+                key={workout.id}
+                href={`/dashboard/workout/${workout.id}`}
+                className="block"
+              >
+                <Card className="hover:bg-accent transition-colors cursor-pointer">
+                  <CardHeader className="pb-2">
+                    <CardTitle className="text-base">
+                      {workout.name ?? "Untitled Workout"}
+                    </CardTitle>
+                  </CardHeader>
+                  {workout.exercises.length > 0 && (
+                    <CardContent>
+                      <ul className="list-disc list-inside text-sm text-muted-foreground space-y-1">
+                        {workout.exercises.map((exercise) => (
+                          <li key={exercise}>{exercise}</li>
+                        ))}
+                      </ul>
+                    </CardContent>
+                  )}
+                </Card>
+              </Link>
             ))}
           </div>
         )}
